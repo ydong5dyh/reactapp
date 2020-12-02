@@ -36,9 +36,9 @@ const productList = [
 
 class App extends Component {
   render() {
+    /* return a filtered list component */
     return (
       <div>
-      /* return a filtered list component */
       <FilteredList list={productList}/>
       </div>
     )

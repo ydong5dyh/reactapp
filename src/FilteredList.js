@@ -99,7 +99,7 @@ class FilteredList extends Component {
       <div className="page">
       <div className = "menu">
       <div className="menu-wrapper">
-        /* Filter for product category */
+        {/* Filter for product category */}
         <p id="type-label">Product Type</p>
         <Nav id="type-control" variant="pills" defaultActiveKey="All">
           <Nav.Item>
@@ -116,7 +116,7 @@ class FilteredList extends Component {
           </Nav.Item>
         </Nav>
 
-        /* Filter for tea type in product */
+        {/* Filter for tea type in product */}
         <p id="tea-label">Tea Type</p>
         <div className="tea-control">
         <Nav variant="pills" defaultActiveKey="All">
@@ -135,7 +135,7 @@ class FilteredList extends Component {
         </Nav>
         </div>
 
-        /* Sort by price */
+        {/* Sort by price */}
         <p className="sort-label">Sort by price</p>
         <div className="sort-control">
         <DropdownButton id="dropdown-basic-button" title={this.state.sort}>
@@ -147,18 +147,18 @@ class FilteredList extends Component {
 
       </div>
       </div>
-      /* display the products that should show after filtering and sorting */
+      {/* display the products that should show after filtering and sorting */}
       <div className="products">
         <DisplayList list={this.props.list.filter(this.matchesFilterType).sort(this.sortByPrice(this.state.sort))} onAddSelect={this.onAddSelect}/>
       </div>
 
-      /* A cart section that has all the products user added, user can also remove product from here */
+      {/* A cart section that has all the products user added, user can also remove product from here */}
       <div className="cart">
       <div className="cart-top">
         <p id="cart-title"> My Cart</p>
         <p>Total price: {this.state.total} </p>
       </div>
-      /* display products in the cart */
+      {/* display products in the cart */}
       <div className="cart-list">
         {this.state.cart.map(item =>
         <div className="cart-item">

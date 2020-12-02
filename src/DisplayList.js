@@ -4,9 +4,9 @@ import {Button} from 'react-bootstrap';
 
 class DisplayList extends Component {
   render() {
+    /* use a map function to map each product to a div with relevant image, text, button */
     return(
     <div>
-      /* use a map function to map each product to a div with relevant image, text, button */
       {this.props.list.map(item =>
         <div className="product-component">
           <img className="img-product" src={item.image}/>
