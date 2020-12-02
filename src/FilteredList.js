@@ -16,6 +16,7 @@ class FilteredList extends Component {
   }
 
   onAddSelect = (item) => {
+    /* make a new item and add it to the cart in state */
     const newItem = {
       name: item.name,
       type: item.type,
@@ -30,22 +31,24 @@ class FilteredList extends Component {
       cart: newCart,
       total: newTotal
     });
-    /*alert("hello"+ item.name+newItem.name);*/
   }
 
   onSelectFilterType = (event) => {
+    /* update the state */
     this.setState({
       type: event
     });
   }
 
   onSelectFilterTea = (event) => {
+    /* update the state */
     this.setState({
       tea: event
     });
   }
 
   matchesFilterType = item => {
+    /* check for filter condition and return a boolean */
     if((this.state.type !== "All"&&this.state.type !== item.type)||(this.state.tea !== "All"&&this.state.tea !== item.tea)) {
       return false;
     }
@@ -53,12 +56,14 @@ class FilteredList extends Component {
   }
 
   onSelectSortPrice = (event) => {
+    /* update the state */
     this.setState({
       sort: event
     });
   }
 
   sortByPrice = (order="No Sorting") => {
+    /* a compare function for price sorting */
     return (x,y) => {
       if(order==="No Sorting"){
         return 0;
@@ -80,20 +85,13 @@ class FilteredList extends Component {
   }
 
   onRemoveClick = (item) => {
+    /* if user removes an item, remove it from the cart in state */
     const newCart = this.state.cart.filter(x=> (x.key !== item.key));
     const newTotal = this.state.total - item.price;
     this.setState({
       cart:newCart,
       total: newTotal
     });
-    /*alert("hi"+ item.key);*/
-  }
-
-  createCart = (item) => {
-    return
-    <div>
-    hi
-    </div>
   }
 
   render() {
@@ -101,9 +99,8 @@ class FilteredList extends Component {
       <div className="page">
       <div className = "menu">
       <div className="menu-wrapper">
-
+        /* Filter for product category */
         <p id="type-label">Product Type</p>
-
         <Nav id="type-control" variant="pills" defaultActiveKey="All">
           <Nav.Item>
             <Nav.Link eventKey = "All" onSelect={this.onSelectFilterType}>All</Nav.Link>
@@ -119,8 +116,7 @@ class FilteredList extends Component {
           </Nav.Item>
         </Nav>
 
-
-
+        /* Filter for tea type in product */
         <p id="tea-label">Tea Type</p>
         <div className="tea-control">
         <Nav variant="pills" defaultActiveKey="All">
@@ -139,8 +135,7 @@ class FilteredList extends Component {
         </Nav>
         </div>
 
-
-
+        /* Sort by price */
         <p className="sort-label">Sort by price</p>
         <div className="sort-control">
         <DropdownButton id="dropdown-basic-button" title={this.state.sort}>
@@ -152,17 +147,18 @@ class FilteredList extends Component {
 
       </div>
       </div>
-
+      /* display the products that should show after filtering and sorting */
       <div className="products">
         <DisplayList list={this.props.list.filter(this.matchesFilterType).sort(this.sortByPrice(this.state.sort))} onAddSelect={this.onAddSelect}/>
       </div>
 
-
+      /* A cart section that has all the products user added, user can also remove product from here */
       <div className="cart">
       <div className="cart-top">
         <p id="cart-title"> My Cart</p>
         <p>Total price: {this.state.total} </p>
       </div>
+      /* display products in the cart */
       <div className="cart-list">
         {this.state.cart.map(item =>
         <div className="cart-item">
@@ -177,8 +173,6 @@ class FilteredList extends Component {
         )}
       </div>
       </div>
-
-
 
       </div>
     )

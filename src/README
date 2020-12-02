@@ -1,0 +1,21 @@
+I made a website for a milk tea shop. Customers can use the website to find the food
+and drinks they want to order and place them in the cart.
+There are 3 main parts of the interface.
+1. A top panel that contains all the filtering and sorting functionalities. Customers
+can filter by product type (milk tea/fruit tea/other) and tea type (what type of
+tea is in the product: black/green/other). They can also sort products by price.
+2. A list that displays all products that satisfy filters with customer's sorting
+preference. Here, customers can click buttons to add products to cart.
+3. A cart showing all products customers added, as well as a total price. Customers
+can remove products here.
+
+I have 3 main js file.
+In App.js, I initialize a FilteredList component.
+In DisplayList.js, I use a map function to display each product with their
+corresponding information (image, text description,...)
+In FilteredList.js, I handle filtering and sorting with different functions. And
+I return the products that satisfy customers' requests. My filter and sort UI
+components are also written here along with the functions that they trigger. My
+cart is also in this js file, I use the state to record the items in cart and update
+the list accordingly whenever customers add/remove an item. I also use the cart
+in state to calculate total price (my aggregated field).

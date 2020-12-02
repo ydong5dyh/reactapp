@@ -17,6 +17,7 @@ import jasmine from "./images/jasmine.jpg";
 import boba from "./images/boba.jpg";
 import cheesecake from "./images/cheesecake.jpg";
 
+/* A list of all available products */
 const productList = [
   {name: "Oolong Milk Tea", type: "Milk Tea", tea: 'Black', price: 4, image: oolong},
   {name: "Taro Milk Tea", type: "Milk Tea", tea: 'Other', price: 5.5, image: taro},
@@ -37,6 +38,7 @@ class App extends Component {
   render() {
     return (
       <div>
+      /* return a filtered list component */
       <FilteredList list={productList}/>
       </div>
     )
